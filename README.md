@@ -50,3 +50,22 @@ flutter build web --no-web-resources-cdn
 
 Сейчас в проекте настроена платформа web; для сборки Android/iOS понадобятся
 соответствующие платформенные проекты и SDK (они уже есть в `android/` и `ios/`).
+
+## Готовые сборки: APK и IPA
+
+Собранные установочные файлы лежат в родительском проекте, в папке
+`apk and ipa` (рядом с папкой `campuslife_app`):
+
+| Файл | Что это |
+|------|---------|
+| `apk and ipa/campuslife-release.apk` | Android APK, release-сборка (~66 МБ), собирается командой `flutter build apk --release` |
+| `apk and ipa/campuslife-release.ipa` | iOS IPA без подписи (~12 МБ), собирается через GitHub Actions |
+
+Как обновить APK: запустить `flutter build apk --release` и скопировать
+`build/app/outputs/flutter-apk/app-release.apk` в папку `apk and ipa`.
+
+Как обновить IPA: на Windows IPA собирается через GitHub Actions —
+репозиторий `helovekus/campuslife-app`, воркфлоу `.github/workflows/ios_build.yml`.
+GitHub → Actions → «Build iOS» → зелёный run → «Artifacts: CampusLife-iOS» →
+скачать zip, внутри `campuslife.ipa`. IPA не подписан (no codesign),
+установка на iPhone — через Sideloadly или AltStore с Apple ID.
