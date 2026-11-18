@@ -1,0 +1,463 @@
+import 'dart:async';
+
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../app/theme.dart';
+import '../onboarding/participant_onboarding.dart';
+import 'app_icons.dart';
+import 'kit.dart';
+
+/// Keys for onboarding state.
+const _kOnboardingCompleted = 'onboarding_completed';
+const _kFishEnabled = 'fish_enabled';
+
+/// Returns whether the onboarding has been completed.
+Future<bool> isOnboardingCompleted() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getBool(_kOnboardingCompleted) ?? false;
+}
+
+/// Marks the onboarding as completed.
+Future<void> completeOnboarding() async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setBool(_kOnboardingCompleted, true);
+}
+
+/// Returns whether fish animation is enabled in the ocean backdrop.
+Future<bool> isFishEnabled() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getBool(_kFishEnabled) ?? true;
+}
+
+/// Sets whether fish animation is enabled.
+Future<void> setFishEnabled(bool enabled) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setBool(_kFishEnabled, enabled);
+}
+
+/// The onboarding tutorial that teaches users how to interact with the feed.
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
+
+  @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  int _step = 0;
+  bool _taskCompleted = false;
+
+  static const _steps = [
+    _OnboardingStep(
+      title: 'Добро пожаловать!',
+      description: 'Проведи по экрану, чтобы листать события.',
+      task: 'Сделай свайп вверх или вниз',
+      icon: null,
+    ),
+    _OnboardingStep(
+      title: 'Напоминания',
+      description: 'Нажми на колокольчик, чтобы не пропустить событие.',
+      task: 'Нажми кнопку напоминания',
+      icon: 'reminder',
+    ),
+    _OnboardingStep(
+      title: 'Лайки и запись',
+      description:
+          'Нажми на сердце, чтобы сохранить событие. Зажми и потяни влево, чтобы записаться.',
+      task: 'Попробуй нажать или зажать сердце',
+      icon: 'like',
+    ),
+    _OnboardingStep(
+      title: 'Описание',
+      description: 'Узнай подробности о событии — где, когда и что будет.',
+      task: 'Открой описание события',
+      icon: 'description',
+    ),
+    _OnboardingStep(
+      title: 'Поделись с друзьями',
+      description: 'Отправь QR-код или ссылку на событие друзьям.',
+      task: 'Нажми кнопку поделиться',
+      icon: 'share',
+    ),
+    _OnboardingStep(
+      title: 'Жалоба',
+      description: 'Если что-то не так, сообщи модераторам.',
+      task: 'Открой форму жалобы',
+      icon: 'report',
+    ),
+    _OnboardingStep(
+      title: 'Готово!',
+      description:
+          'Теперь ты знаешь, как пользоваться приложением. Удачи на мероприятиях!',
+      task: null,
+      icon: null,
+    ),
+  ];
+
+  void _completeTask() {
+    if (!_taskCompleted && _steps[_step].task != null) {
+      setState(() => _taskCompleted = true);
+      HapticFeedback.mediumImpact();
+    }
+  }
+
+  void _nextStep() {
+    if (_step < _steps.length - 1) {
+      setState(() {
+        _step++;
+        _taskCompleted = false;
+      });
+      HapticFeedback.lightImpact();
+    } else {
+      _finish();
+    }
+  }
+
+  void _skip() => _finish();
+
+  Future<void> _finish() async {
+    await completeOnboarding();
+    if (mounted) Navigator.of(context).pop();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final step = _steps[_step];
+    return Scaffold(
+      backgroundColor: Palette.ink,
+      body: Stack(
+        children: [
+          // Mock feed background
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFF0A1628),
+                  Color(0xFF0D2137),
+                  Color(0xFF081320),
+                ],
+              ),
+            ),
+          ),
+          // Content
+          SafeArea(
+            child: Column(
+              children: [
+                Expanded(
+                  child: Listener(
+                    onPointerSignal: (signal) {
+                      if (signal is PointerScrollEvent && _step == 0) {
+                        _completeTask();
+                      }
+                    },
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onVerticalDragUpdate: (details) {
+                        if (_step == 0 && details.delta.dy.abs() > 6) {
+                          _completeTask();
+                        }
+                      },
+                      child: _buildMockFeed(step),
+                    ),
+                  ),
+                ),
+                // Bottom panel
+                Container(
+                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    border: Border(
+                      top: BorderSide(color: Colors.white.withValues(alpha: 0.1)),
+                    ),
+                  ),
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.sizeOf(context).height * 0.55,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                      // Progress dots
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          _steps.length,
+                          (i) => Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 4),
+                            width: i == _step ? 20 : 8,
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: i <= _step
+                                  ? Palette.accent
+                                  : Colors.white.withValues(alpha: 0.3),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      // Title and description
+                      Text(
+                        step.title,
+                        textAlign: TextAlign.center,
+                        style: Fonts.sansStyle(
+                          size: 20,
+                          weight: 700,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        step.description,
+                        textAlign: TextAlign.center,
+                        style: Fonts.sansStyle(
+                          size: 14,
+                          height: 1.4,
+                          color: Colors.white.withValues(alpha: 0.8),
+                        ),
+                      ),
+                      if (step.task != null) ...[
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: _taskCompleted
+                                ? Palette.mint.withValues(alpha: 0.2)
+                                : Palette.accent.withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: _taskCompleted
+                                  ? Palette.mint
+                                  : Palette.accent.withValues(alpha: 0.5),
+                            ),
+                          ),
+                           child: Row(
+                             children: [
+                              Icon(
+                                _taskCompleted
+                                    ? Icons.check_circle_rounded
+                                    : Icons.assignment_rounded,
+                                size: 16,
+                                color: _taskCompleted
+                                    ? Palette.mint
+                                    : Palette.accent,
+                              ),
+                              const SizedBox(width: 8),
+                               Expanded(
+                                 child: Text(
+                                   _taskCompleted ? 'Выполнено!' : step.task!,
+                                   style: Fonts.sansStyle(
+                                     size: 12.5,
+                                     weight: _taskCompleted ? 600 : 400,
+                                     color: _taskCompleted
+                                         ? Palette.mint
+                                         : Colors.white.withValues(alpha: 0.9),
+                                   ),
+                                 ),
+                               ),
+                            ],
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: 16),
+                      // Buttons
+                      Row(
+                        children: [
+                          if (_step > 0 && _step < _steps.length - 1)
+                            Expanded(
+                              child: GhostButton(
+                                label: 'Пропустить',
+                                onPressed: _skip,
+                              ),
+                            ),
+                          if (_step > 0 && _step < _steps.length - 1)
+                            const SizedBox(width: 12),
+                          Expanded(
+                            flex: _step == 0 || _step == _steps.length - 1 ? 1 : 2,
+                            child: PrimaryButton(
+                              label: _step == _steps.length - 1
+                                  ? 'Начать'
+                                  : 'Далее',
+                              onPressed: step.task == null || _taskCompleted
+                                  ? _nextStep
+                                  : null,
+                              arrow: _step == _steps.length - 1,
+                            ),
+                          ),
+                        ],
+                      ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMockFeed(_OnboardingStep step) {
+    return Stack(
+      children: [
+        // Mock event card
+        Center(
+           child: Container(
+             margin: const EdgeInsets.all(20),
+             padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.05),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                 Icon(
+                   Icons.event_rounded,
+                   size: 36,
+                  color: Colors.white.withValues(alpha: 0.5),
+                ),
+                const SizedBox(height: 12),
+                 Text(
+                   'Пример события',
+                   textAlign: TextAlign.center,
+                   style: Fonts.sansStyle(
+                     size: 16,
+                    weight: 600,
+                    color: Colors.white.withValues(alpha: 0.7),
+                  ),
+                ),
+                 const SizedBox(height: 4),
+                 Text(
+                   'Это демонстрационный экран',
+                   textAlign: TextAlign.center,
+                   style: Fonts.sansStyle(
+                     size: 12,
+                    color: Colors.white.withValues(alpha: 0.5),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        // Right rail with action buttons
+        Positioned(
+          right: 12,
+          bottom: 100,
+          child: _buildMockRail(step),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMockRail(_OnboardingStep step) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildMockButton('reminder', step),
+        const SizedBox(height: Scale.railGap),
+        _buildMockButton('like', step),
+        const SizedBox(height: Scale.railGap),
+        _buildMockButton('description', step),
+        const SizedBox(height: Scale.railGap),
+        _buildMockButton('share', step),
+        const SizedBox(height: Scale.railGap),
+        _buildMockButton('report', step),
+      ],
+    );
+  }
+
+  Widget _buildMockButton(String name, _OnboardingStep step) {
+    final isCurrent = step.icon == name;
+    final iconPath = switch (name) {
+      'reminder' => AppIcons.reminderLight,
+      'like' => AppIcons.likeLight,
+      'description' => AppIcons.descriptionLight,
+      'share' => AppIcons.shareLight,
+      'report' => AppIcons.reportLight,
+      _ => null,
+    };
+
+    return GestureDetector(
+      onTap: isCurrent ? _completeTask : null,
+      onLongPress: name == 'like' && isCurrent ? _completeTask : null,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        width: Scale.railIcon,
+        height: Scale.railIcon,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.transparent,
+          border: Border.all(
+            color: isCurrent ? Palette.accent : Colors.transparent,
+            width: isCurrent ? 2 : 1,
+          ),
+          boxShadow: isCurrent
+              ? [
+                  BoxShadow(
+                    color: Palette.accent.withValues(alpha: 0.4),
+                    blurRadius: 12,
+                    spreadRadius: 2,
+                  ),
+                ]
+              : null,
+        ),
+        child: iconPath != null
+            ? Center(
+                child: ActionIcon(path: iconPath, size: Scale.railIcon),
+              )
+            : null,
+      ),
+    );
+  }
+}
+
+class _OnboardingStep {
+  const _OnboardingStep({
+    required this.title,
+    required this.description,
+    required this.task,
+    required this.icon,
+  });
+
+  final String title;
+  final String description;
+  final String? task;
+  final String? icon;
+}
+
+/// Opens the interactive participant onboarding walkthrough.
+Future<void> showOnboarding(BuildContext context) async {
+  final isDark = Theme.of(context).brightness == Brightness.dark;
+  await Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (_) => Scaffold(
+        backgroundColor: isDark ? const Color(0xFF090D12) : const Color(0xFFF6F6F3),
+        body: ParticipantOnboarding(
+          onFinished: (result) async {
+            await completeOnboarding();
+            if (context.mounted) Navigator.of(context).pop();
+          },
+        ),
+      ),
+      fullscreenDialog: true,
+    ),
+  );
+}
+
+/// Shows the onboarding if it hasn't been completed yet.
+Future<void> showOnboardingIfNeeded(BuildContext context) async {
+  if (await isOnboardingCompleted()) return;
+  if (!context.mounted) return;
+  await showOnboarding(context);
+}
