@@ -1,0 +1,379 @@
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  * Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push less than a minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push about 1 minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run subosito/flutter-action@v2
+  * Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push about 1 minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run subosito/flutter-action@v2
+  ✓ Install dependencies
+  * Install CocoaPods dependencies
+  * Build with xcodebuild (no signing)
+  * Create IPA
+  * Upload IPA
+  * Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push about 1 minute ago
+
+JOBS
+* build-ios (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run subosito/flutter-action@v2
+  ✓ Install dependencies
+  X Install CocoaPods dependencies
+  - Build with xcodebuild (no signing)
+  - Create IPA
+  - Upload IPA
+  ✓ Post Run subosito/flutter-action@v2
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* main Build iOS · 44378670942
+Triggered via push about 1 minute ago
+
+JOBS
+X build-ios in 2m10s (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run subosito/flutter-action@v2
+  ✓ Install dependencies
+  X Install CocoaPods dependencies
+  - Build with xcodebuild (no signing)
+  - Create IPA
+  - Upload IPA
+  ✓ Post Run subosito/flutter-action@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build-ios: .github#2
+
+X Process completed with exit code 1.
+build-ios: .github#19
+
+- Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.
+build-ios: .github#1
+
+X main Build iOS · 44378670942
+Triggered via push about 1 minute ago
+
+JOBS
+X build-ios in 2m10s (ID 135064595107)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run subosito/flutter-action@v2
+  ✓ Install dependencies
+  X Install CocoaPods dependencies
+  - Build with xcodebuild (no signing)
+  - Create IPA
+  - Upload IPA
+  ✓ Post Run subosito/flutter-action@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build-ios: .github#2
+
+X Process completed with exit code 1.
+build-ios: .github#19
+
+- Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.
+build-ios: .github#1
+
